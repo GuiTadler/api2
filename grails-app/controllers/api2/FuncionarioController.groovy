@@ -9,57 +9,99 @@ class FuncionarioController {
     def index() {
         if (request.method != "GET") {
             response.setStatus(405)
-            render "Método Não Permitido - Exclusivo para Update | GET"
+            def errorMessage = [
+                    message: "Método Não Permitido - Exclusivo para Update | GET"
+            ]
+            render errorMessage as JSON
             return
         }
 
-        def funcionarios = FuncionarioService.listaFuncionarios()
-        render funcionarios as JSON
+        try {
+            def funcionarios = FuncionarioService.listaFuncionarios()
+            render funcionarios as JSON
+        } catch (Exception e) {
+            handleControllerException(e)
+        }
     }
 
     def show(Long id) {
         if (request.method != "GET") {
             response.setStatus(405)
-            render "Método Não Permitido - Exclusivo para Update | GET"
+            def errorMessage = [
+                    message: "Método Não Permitido - Exclusivo para Update | GET"
+            ]
+            render errorMessage as JSON
             return
         }
 
-        def funcionario = FuncionarioService.buscaFuncId(id)
-        render funcionario as JSON
+        try {
+            def funcionario = FuncionarioService.buscaFuncId(id)
+            render funcionario as JSON
+        } catch (Exception e) {
+            handleControllerException(e)
+        }
     }
 
     def save() {
         if (request.method != "POST") {
             response.setStatus(405)
-            render "Método Não Permitido - Exclusivo para Update | POST"
+            def errorMessage = [
+                    message: "Método Não Permitido - Exclusivo para Update | POST"
+            ]
+            render errorMessage as JSON
             return
         }
 
-        def funcionarioDate = request.JSON
-        def funcionario = FuncionarioService.criaFuncionario(funcionarioDate)
-        render funcionario as JSON
+        try {
+            def funcionarioDate = request.JSON
+            def funcionario = FuncionarioService.criaFuncionario(funcionarioDate)
+            render funcionario as JSON
+        } catch (Exception e) {
+            handleControllerException(e)
+        }
     }
 
     def update(Long id) {
         if (request.method != "PUT") {
             response.setStatus(405)
-            render "Método Não Permitido - Exclusivo para Update | PUT"
+            def errorMessage = [
+                    message: "Método Não Permitido - Exclusivo para Update | PUT"
+            ]
+            render errorMessage as JSON
             return
         }
 
-        def funcionarioDate = request.JSON
-        def funcionario = FuncionarioService.atualizaFuncionario(id, funcionarioDate)
-        render funcionario as JSON
+        try {
+            def funcionarioDate = request.JSON
+            def funcionario = FuncionarioService.atualizaFuncionario(id, funcionarioDate)
+            render funcionario as JSON
+        } catch (Exception e) {
+            handleControllerException(e)
+        }
     }
 
     def delete(Long id) {
         if (request.method != "DELETE") {
             response.setStatus(405)
-            render "Método Não Permitido - Exclusivo para Update | DELETE"
+            def errorMessage = [
+                    message: "Método Não Permitido - Exclusivo para Update | DELETE"
+            ]
+            render errorMessage as JSON
             return
         }
 
-        def funcionario = FuncionarioService.excluiFuncionario(id)
-        render funcionario as JSON
+        try {
+            def funcionario = FuncionarioService.excluiFuncionario(id)
+            render funcionario as JSON
+        } catch (Exception e) {
+            handleControllerException(e)
+        }
+    }
+
+    private void handleControllerException(Exception e) {
+        def errorMessage = [
+                message: "Funcionário de ID Não Encontrado Para Essa Operação!"
+        ]
+        render errorMessage as JSON
     }
 }

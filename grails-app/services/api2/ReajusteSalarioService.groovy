@@ -1,11 +1,10 @@
 package api2
 
 import org.springframework.validation.BindingResult
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.support.TransactionTemplate
-
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 
 class ReajusteSalarioService {

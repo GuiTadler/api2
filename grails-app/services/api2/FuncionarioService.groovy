@@ -1,5 +1,6 @@
 package api2
 
+import javassist.NotFoundException
 import org.springframework.transaction.PlatformTransactionManager
 import org.springframework.transaction.support.TransactionTemplate
 import org.springframework.validation.BindingResult
@@ -53,7 +54,7 @@ class FuncionarioService {
 
     private static void validaFuncionario(def funcionario, Long id) {
         if (!funcionario) {
-            throw new IllegalArgumentException("Funcionário de ID ${id} não encontrado!")
+            throw new NotFoundException("Funcionário de ID ${id} não encontrado!")
         }
     }
 
