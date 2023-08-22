@@ -9,57 +9,57 @@ class CidadeController {
     def index() {
         if (request.method != "GET") {
             response.setStatus(405)
-            render "Método não permitido para esta ação."
+            render "Método Não Permitido - Exclusivo para Update | GET"
             return
         }
 
-        def cidades = cidadeService.listarCidades()
+        def cidades = CidadeService.listaCidades()
         render cidades as JSON
     }
 
     def show(Long id) {
         if (request.method != "GET") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | GET"
             return
         }
 
-        def cidade = cidadeService.buscarCidadePorId(id)
+        def cidade = CidadeService.buscarCidaId(id)
         render cidade as JSON
     }
 
     def save() {
         if (request.method != "POST") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | POST"
             return
         }
 
-        def cidadeData = request.JSON
-        def cidade = cidadeService.criarCidade(cidadeData)
+        def cidadeDate = request.JSON
+        def cidade = CidadeService.criarCidade(cidadeDate)
         render cidade as JSON
     }
 
     def update(Long id) {
         if (request.method != "PUT") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | PUT"
             return
         }
 
         def cidadeData = request.JSON
-        def cidade = cidadeService.atualizarCidade(id, cidadeData)
+        def cidade = CidadeService.atualizarCidade(id, cidadeData)
         render cidade as JSON
     }
 
     def delete(Long id) {
         if (request.method != "DELETE") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | DELETE"
             return
         }
 
-        def cidade = cidadeService.excluirCidade(id)
+        def cidade = CidadeService.excluiCidade(id)
         render cidade as JSON
     }
 }

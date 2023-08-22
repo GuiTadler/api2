@@ -13,7 +13,7 @@ class FuncionarioController {
             return
         }
 
-        def funcionarios = FuncionarioService.listarFuncionarios()
+        def funcionarios = FuncionarioService.listaFuncionarios()
         render funcionarios as JSON
     }
 
@@ -24,7 +24,7 @@ class FuncionarioController {
             return
         }
 
-        def funcionario = FuncionarioService.buscarFuncionarioPorId(id)
+        def funcionario = FuncionarioService.buscaFuncId(id)
         render funcionario as JSON
     }
 
@@ -35,8 +35,8 @@ class FuncionarioController {
             return
         }
 
-        def funcionarioData = request.JSON
-        def funcionario = FuncionarioService.criarFuncionario(funcionarioData)
+        def funcionarioDate = request.JSON
+        def funcionario = FuncionarioService.criaFuncionario(funcionarioDate)
         render funcionario as JSON
     }
 
@@ -47,8 +47,8 @@ class FuncionarioController {
             return
         }
 
-        def funcionarioData = request.JSON
-        def funcionario = FuncionarioService.atualizarFuncionario(id, funcionarioData)
+        def funcionarioDate = request.JSON
+        def funcionario = FuncionarioService.atualizaFuncionario(id, funcionarioDate)
         render funcionario as JSON
     }
 
@@ -59,7 +59,7 @@ class FuncionarioController {
             return
         }
 
-        def funcionario = FuncionarioService.excluirFuncionario(id)
+        def funcionario = FuncionarioService.excluiFuncionario(id)
         render funcionario as JSON
     }
 }

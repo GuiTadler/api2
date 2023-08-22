@@ -4,62 +4,62 @@ import grails.converters.JSON
 
 class ReajusteSalarioController {
 
-    def reajusteSalarioService
+    def ReajusteSalarioService
 
     def index() {
         if (request.method != "GET") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | GET"
             return
         }
 
-        def reajustes = reajusteSalarioService.listarReajustes()
+        def reajustes = ReajusteSalarioService.listaReajustes()
         render reajustes as JSON
     }
 
     def show(Long id) {
         if (request.method != "GET") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | GET"
             return
         }
 
-        def reajuste = reajusteSalarioService.buscarReajustePorId(id)
+        def reajuste = ReajusteSalarioService.buscaReajId(id)
         render reajuste as JSON
     }
 
     def save() {
         if (request.method != "POST") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | POST"
             return
         }
 
-        def reajusteData = request.JSON
-        def reajuste = reajusteSalarioService.criarReajuste(reajusteData)
+        def reajusteDate = request.JSON
+        def reajuste = ReajusteSalarioService.criaReajuste(reajusteDate)
         render reajuste as JSON
     }
 
     def update(Long id) {
         if (request.method != "PUT") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | PUT"
             return
         }
 
-        def reajusteData = request.JSON
-        def reajuste = reajusteSalarioService.atualizarReajuste(id, reajusteData)
+        def reajusteDate = request.JSON
+        def reajuste = ReajusteSalarioService.atualizaReajuste(id, reajusteDate)
         render reajuste as JSON
     }
 
     def delete(Long id) {
         if (request.method != "DELETE") {
-            response.setStatus(405) // Método não permitido
-            render "Método não permitido para esta ação."
+            response.setStatus(405)
+            render "Método Não Permitido - Exclusivo para Update | DELETE"
             return
         }
 
-        def reajuste = reajusteSalarioService.excluirReajuste(id)
+        def reajuste = ReajusteSalarioService.excluiReajuste(id)
         render reajuste as JSON
     }
 }

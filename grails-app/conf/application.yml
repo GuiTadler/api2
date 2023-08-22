@@ -136,3 +136,11 @@ environments:
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
+grails:
+    databinding:
+        dateFormats: ['dd/MM/yyyy']
+---
+grails:
+    gorm:
+        transactions:
+            readOnly: false
