@@ -1,10 +1,8 @@
 package api2
 
-import grails.gorm.annotation.Entity
-
-@Entity
 class Cidade {
 
+    Long id
     String nome
 
     static mapping = {

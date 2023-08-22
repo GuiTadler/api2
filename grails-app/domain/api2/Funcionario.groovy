@@ -1,12 +1,9 @@
 package api2
 
-import grails.gorm.annotation.Entity
-
-@Entity
 class Funcionario {
 
     String nome
-    Cidade cidade
+    static belongsTo = [cidade: Cidade]
 
     static mapping = {
         id generator: 'increment'
