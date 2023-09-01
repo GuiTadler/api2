@@ -92,6 +92,7 @@ dataSource:
     pooled: true
     jmxExport: true
     driverClassName: oracle.jdbc.OracleDriver
+    logSql: true
     username: ALUNO4
     password: 'ALUNO4'
 
@@ -135,12 +136,3 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-
-grails:
-    databinding:
-        dateFormats: ['dd/MM/yyyy']
----
-grails:
-    gorm:
-        transactions:
-            readOnly: false
