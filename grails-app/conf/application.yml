@@ -1,6 +1,6 @@
 ---
 server.servlet.context-path: '/${info.app.name}' # gera o nome do projeto logo apos o localhost
-
+---
 grails:
     profile: rest-api
     codegen:
