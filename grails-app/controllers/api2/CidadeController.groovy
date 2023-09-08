@@ -1,5 +1,6 @@
 package api2
 
+import api2.commands.CidadeCommand
 import api2.traits.ExceptionHandlers
 
 class CidadeController implements ExceptionHandlers {
@@ -16,8 +17,8 @@ class CidadeController implements ExceptionHandlers {
 
     CidadeService cidadeService
 
-    def save() {
-        Map retorno = cidadeService.save()
+    def save(CidadeCommand command) {
+        Map retorno = cidadeService.save(command)
         respond(retorno)
     }
 
@@ -26,8 +27,8 @@ class CidadeController implements ExceptionHandlers {
         respond(retorno)
     }
 
-    def update() {
-        Map retorno = cidadeService.update()
+    def update(CidadeCommand command) {
+        Map retorno = cidadeService.update(command)
         respond(retorno)
     }
 

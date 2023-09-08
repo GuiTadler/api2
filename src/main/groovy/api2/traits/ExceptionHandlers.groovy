@@ -16,14 +16,14 @@ trait ExceptionHandlers implements RestResponder {
     }
 
     def handleNumberFormatException(NumberFormatException e) {
-        respond([message: "Formato invalido"], status: 400)
+        respond([message: "Formato inválido"], status: 400)
     }
 
     def handleDateTimeParseException(DateTimeParseException e) {
-        respond([message: "Formato invalido de data invalida"], status: 420)
+        respond([message: "Formato inválido de data inválida"], status: 420)
     }
 
     def handleException(Exception e) {
-        respond([message: "Contate o admin"], status: 400)
+        respond([message: "Ocorreu um erro no servidor, contate o administrador!"], status: 400)
     }
 }

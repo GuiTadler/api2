@@ -6,7 +6,7 @@ class Funcionario {
     static belongsTo = [cidade: Cidade]
 
     static mapping = {
-        id generator: 'increment'
+        id generator: "increment"
         version false
     }
 
