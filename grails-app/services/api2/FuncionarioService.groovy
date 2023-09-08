@@ -10,18 +10,18 @@ class FuncionarioService implements ServletAttributes {
     Map save() {
         Map retorno = [success: true]
 
-        Funcionario funcionario = new Funcionario()
-        funcionario.setNome(request.JSON.nome)
-        funcionario.setCidade(Cidade.get(request.JSON.cidadeId))
+        Cidade cidade = Cidade.get(request.JSON.cidadeId)
 
-        if (!funcionario.validate()) {
-            retorno.success = false
-            retorno.errors = funcionario.getErrors()
-            return retorno
+        if (!cidade) {
+            throw new NotFoundException("Cidade de ID: ${request.JSON.cidadeId} Encontrada!")
         }
 
+        Funcionario funcionario = new Funcionario()
+        funcionario.setNome(request.JSON.nome)
+        funcionario.setCidade(cidade)
         funcionario.save(flush: true)
         retorno.registro = getShowRecord(funcionario)
+
         return retorno
     }
 
@@ -56,10 +56,10 @@ class FuncionarioService implements ServletAttributes {
         return retorno
     }
 
-    Map delete() {
+    Map delete(Long id) {
         Map retorno = [success: true]
 
-        Funcionario funcionario = Funcionario.get(Long.parseLong(params.id))
+        Funcionario funcionario = Funcionario.get(id)
         funcionario.delete(flush: true)
 
         return retorno
@@ -75,7 +75,7 @@ class FuncionarioService implements ServletAttributes {
         return retorno
     }
 
-    private Map getShowRecord(Funcionario funcionario) {
+    private static Map getShowRecord(Funcionario funcionario) {
         return [
                 id: funcionario.id,
                 nome: funcionario.nome,

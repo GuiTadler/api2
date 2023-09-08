@@ -31,8 +31,8 @@ class FuncionarioController implements ExceptionHandlers {
         respond(retorno)
     }
 
-    def delete() {
-        Map retorno = funcionarioService.delete()
+    def delete(Long id) {
+        Map retorno = funcionarioService.delete(id)
         respond(retorno)
     }
 
